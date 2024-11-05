@@ -1,40 +1,43 @@
 # Music Genre Classification using Federated Learning
 
 Paper Link: https://link.springer.com/chapter/10.1007/978-981-19-7447-2_23
+<img width="533" alt="Screenshot 2024-11-05 at 10 46 36 PM" src="https://github.com/user-attachments/assets/438509d5-48b4-42c6-84ea-727c54608611">
+<img width="412" alt="Screenshot 2024-11-05 at 10 46 42 PM" src="https://github.com/user-attachments/assets/cde478e4-035a-41dd-a524-06db81d8ecd3">
 
-## Overview
 
-This project aims to classify music genres from audio recordings using machine learning techniques, specifically employing federated learning to enhance data privacy. The classification is based on audio features extracted from 3-second audio segments of various genres.
+# Music Genre Classification Using Federated Learning
 
-## Table of Contents
+This project leverages Federated Learning (FL) to perform music genre classification on audio data without compromising user data privacy. FL allows machine learning models to train on decentralized data without requiring the data to be shared with a central server. This approach is especially relevant for the music industry, where privacy concerns are high, as it enables collaboration across entities while keeping sensitive data secure.
 
-- [Introduction](#introduction)
-- [Setup](#setup)
-- [Data Preparation](#data-preparation)
-- [Model Training](#model-training)
-- [Results](#results)
-- [Future Work](#future-work)
-- [License](#license)
+## Key Details
 
-## Introduction
+- **Dataset**: Utilizes the GTZAN music genre dataset, containing 10 genres (e.g., rock, jazz, hip-hop, etc.), with each genre having an equal distribution of 1000 samples.
+- **Model Architecture**: Employs a Convolutional Neural Network (CNN) with four convolutional layers followed by dense layers, which effectively extracts features from audio spectrograms for genre classification.
+- **Federated Learning Approach**: Implements a centralized FL architecture where local client updates are aggregated on a central server using the Federated Averaging (FedAvg) algorithm, ensuring privacy and reducing data storage needs.
+- **Data Processing**: Audio files are split into smaller segments, converted into grayscale spectrograms, and further optimized for FL. TensorFlow Federated is used to handle client-server interactions and simulate real-world federated data distribution.
+- **Results**: The FL model achieves accuracy levels comparable to traditional centralized models, providing strong performance while enhancing data privacy and autonomy.
 
-Music genre classification is a challenging task that can be significantly improved using machine learning techniques. In this project, we leverage federated learning to enable model training across multiple clients without sharing sensitive audio data. The model aims to recognize and classify music into various genres, including blues, classical, country, disco, pop, hip-hop, metal, reggae, and rock.
+## Key Contributions
 
-## Setup
+1. Demonstrates decentralized training for music genre classification.
+2. Ensures data privacy by keeping audio data on local devices.
+3. Validates FL’s feasibility for audio data applications in the music industry.
 
-### Prerequisites
+## Technologies Used
 
-To run this project, ensure you have the following installed:
+- **Libraries**: TensorFlow Federated, Keras
+- **Algorithms**: FedAvg for model aggregation, CNN for feature extraction
 
-- Python 3.6 or higher
-- Libraries:
-  - `numpy`
-  - `librosa`
-  - `matplotlib`
-  - `tensorflow`
-  - `pandas`
+## Results Comparison
 
-You can install the required libraries using pip:
+| S.No | Model Comparison                   | Training Approach             | Training Accuracy | Testing Accuracy |
+|------|------------------------------------|-------------------------------|-------------------|------------------|
+| 1    | Proposed Federated Learning        | Without scaling               | 80.2%            | 76.02%          |
+| 2    | Proposed Federated Learning        | With 25% scaling              | 76.46%           | 71.78%          |
+| 3    | Centralized (Neural Network) Model | Traditional centralized model | 92.84%           | 81.65%          |
 
-```bash
-pip install numpy librosa matplotlib tensorflow pandas
+The federated approach shows competitive accuracy compared to the centralized model, highlighting its viability as a privacy-preserving alternative for real-world applications.
+
+---
+
+This project provides a secure and scalable solution for collaborative machine learning in music genre classification, offering potential applications across privacy-sensitive domains.
